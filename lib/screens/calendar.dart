@@ -30,7 +30,7 @@ List<Appointment> getAppointments(List<ExamItem> items){
       startTime: element.date,
       endTime: element.date.add(const Duration(hours: 2)),
       subject: element.title,
-      color: Colors.blue,
+      color: Colors.orange,
     ));
   }
   return meetings;

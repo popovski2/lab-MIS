@@ -15,7 +15,7 @@ void main() {
       CalendarScreen.routeName: (ctx) => CalendarScreen(),
     },
     theme: ThemeData(
-      primarySwatch: Colors.blue,
+      primarySwatch: Colors.orange,
     ),
   ));
 }
