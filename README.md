@@ -1,4 +1,4 @@
-# lab3_mis
+# laboratoriski vezbi - MIS
 
 A new Flutter project.
 
