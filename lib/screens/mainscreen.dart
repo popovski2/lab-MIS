@@ -6,6 +6,8 @@ import 'package:lab3_mis/screens/calendar.dart';
 import 'package:lab3_mis/screens/exam_detail_screen.dart';
 import 'package:nanoid/nanoid.dart';
 
+import 'map.dart';
+
 class MainScreen extends StatefulWidget {
 
   @override
@@ -16,6 +18,9 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   final String title = "Organizator na ispiti";
+
+  int _selectedIndex = 0;
+  var _widgets = <Widget>[CalendarScreen()];
 
   List<ExamItem> _examItems = [
     ExamItem(id: nanoid(5), title: "Verojatnost i statistika", date: DateTime.parse('2022-03-03 11:00')),
@@ -166,16 +171,33 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
       appBar: createAppBar(),
-      body: createBody(),
+      body:
+     createBody(),
       floatingActionButton: FloatingActionButton(
         onPressed: () => ShowCalendar(context, _examItems),
         tooltip: 'Calendar',
         child: const Icon(Icons.calendar_today),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+              icon: Icon(Icons.calendar_today), label: "Calendar"),
+          BottomNavigationBarItem(icon: Icon(Icons.pin_drop), label: "Locations"),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.orange,
+       onTap: _onItemTapped,
       ),
     );
   }
